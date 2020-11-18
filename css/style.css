@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: beige;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+div {
+    margin: auto;
+    padding: 20px;
+}
+
+.timer {
+    font-size: 24px;
+}
+
+.choose {
+    font-size: 28px;
+}
+
+button {
+    margin: auto;
+    display: block;
+}
+
+table {
+    margin: auto;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+    text-align: center;
+    border: 1px solid lightblue;
+    border-radius: 10%;
+    background-color: rgb(255, 255, 255);
+}
+
+.level-scale {
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    padding-top: 0;
+}
+
+button.smiley {
+    width: 50px;
+    height: 50px;
+    font-size: 34px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+body>div.level-scale>button {
+    display: inline-block;
+    font-size: 30px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+body>div.level-scale>button:nth-child(1) {
+    color: green;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+body>div.level-scale>button:nth-child(2) {
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+body>div.level-scale>button:nth-child(3) {
+    color: red;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+p {
+    text-align: center;
+}
+
+.close-cell {
+    background-color: blue;
+}
+
+.open-cell {
+    background-color: white;
+}
+
+.num1 {
+    color: black;
+}
+
+.num2 {
+    color: orange;
+}
+
+.num3 {
+    color: red;
+}
+
+.num4 {
+    color: blue;
+}
+
+.num5 {
+    color: brown;
+}
