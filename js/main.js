@@ -44,6 +44,7 @@ function checkGameOver() {
         document.querySelector(".smiley").innerText = WIN;
     } else console.log('YOU LOSE...');
     document.querySelector(".smiley").innerText = LOSE;
+    clearInterval(startTimer('.timer'));
 }
 // Cell has been clicked
 function cellClicked(elCell, i, j) {
@@ -63,6 +64,7 @@ function cellClicked(elCell, i, j) {
             checkGameOver();
         } else {
             expandShown(elCell, i, j)
+            setInterval(startTimer('.timer'), 1000);
             startTimer('.timer');
         }
     } else return;
