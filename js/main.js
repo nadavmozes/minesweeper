@@ -58,8 +58,8 @@ function cellClicked(elCell, i, j) {
         if (gBoard[i][j].isMine) {
             renderCell({ i, j }, MINE);
             gGame.isOn = false;
-            var heart = document.getElementById('hearts').innerHTML;
-            document.getElementById('🤍').innerHTML = heart;
+            // var heart = document.getElementById('hearts').innerHTML;
+            // document.getElementById('🤍').innerHTML = heart;
             checkGameOver();
         } else {
             expandShown(elCell, i, j)
