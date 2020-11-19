@@ -103,26 +103,12 @@ function renderCell(pos, value) {
 }
 
 // Timer Functions:
-function startStopwatch() {
-    gTimeBegan = new Date();
-    gStopwatchInterval = setInterval(runStopwatch, 11);
-}
-
-function runStopwatch() {
-    var currentTime = new Date();
-    var timeElapsed = new Date(currentTime - gTimeBegan);
-    var min = timeElapsed.getUTCMinutes();
-    var sec = timeElapsed.getUTCSeconds();
-    var ms = timeElapsed.getUTCMilliseconds();
-
-    document.querySelector('.stopwatch span').innerText =
-        (min > 9 ? min + ':' : min > 0 ? '0' + min + ':' : '') +
-        (sec > 9 ? sec : '0' + sec) + '.' +
-        (ms > 99 ? ms : ms > 9 ? '0' + ms : '00' + ms);
-}
-
-function resetStopwatch() {
-    clearInterval(gStopwatchInterval);
-    gStopwatchInterval = null;
-    document.querySelector('.stopwatch span').innerText = "00.000";
+function startTimer(selector) {
+    var startTime = Date.now();
+    gGameInterval = setInterval(function renderTime() {
+        var currTime = Date.now();
+        var timePassed = currTime - startTime;
+        var seconds = ((timePassed % 60000) / 1000).toFixed(3);
+        document.querySelector(`${selector}`).innerText = seconds;
+    }, 1);
 }

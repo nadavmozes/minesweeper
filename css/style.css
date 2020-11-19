@@ -31,11 +31,35 @@ div {
     padding: 20px;
 }
 
+.timerset {
+    height: 50px;
+    font-size: 24px;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+body>div.board {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+body>div.timerset>p.txttimer {
+    display: inline-block;
+}
+
+body>div.timerset>p.timer {
+    display: inline-block;
+}
+
 .specs {
     font-size: 24px;
     margin-bottom: 0;
     text-align: center;
     padding: 0;
+    height: 28px;
 }
 
 body>div.specs>p:nth-child(1) {

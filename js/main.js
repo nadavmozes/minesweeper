@@ -48,6 +48,7 @@ function checkGameOver() {
 // Cell has been clicked
 function cellClicked(elCell, i, j) {
     gCounter++;
+
     if (gCounter === 2) {
         setRandomMines();
         setMinesNegs();
@@ -63,6 +64,7 @@ function cellClicked(elCell, i, j) {
             checkGameOver();
         } else {
             expandShown(elCell, i, j)
+            startTimer('.timer');
         }
     } else return;
 }
