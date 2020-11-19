@@ -88,25 +88,23 @@ function expandShown(elCell, i, j) {
 
 // Set flag on cell
 function setFlag(event, i, j) {
-    // debugger
     if (gGame.isOn) {
-        if (gBoard[i][j].isShown === true) {
-            alert('Cannot flag shown cell');
-        } else if (gBoard[i][j].isMarked) {
+        if (gBoard[i][j].isShown === true) {} else if (gBoard[i][j].isMarked) {
             gBoard[i][j].isMarked = false;
             gGame.markedCount--;
-            renderCell({ i, j }, '');
+            document.querySelector('.mines')
+            renderBoard();
         } else {
             gBoard[i][j].isMarked = true;
             gGame.markedCount++;
+            document.querySelector('.mines')
             renderCell({ i, j }, FLAG);
         }
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        event.preventDefault();
     }
+    event.preventDefault();
     return false;
-}
 
+}
 // Setup difficulties
 function renderLevelScale() {
     var elLevelTable = document.querySelector(".level-scale");

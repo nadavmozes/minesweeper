@@ -190,3 +190,7 @@ body>div.level-scale>button:nth-child(3) {
 .num5 {
     color: brown;
 }
+
+.mines {
+    display: none;
+}
