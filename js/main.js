@@ -48,7 +48,6 @@ function checkGameOver() {
 // Cell has been clicked
 function cellClicked(elCell, i, j) {
     gCounter++;
-
     if (gCounter === 2) {
         setRandomMines();
         setMinesNegs();
@@ -89,6 +88,7 @@ function expandShown(elCell, i, j) {
 
 // Set flag on cell
 function setFlag(event, i, j) {
+    // debugger
     if (gGame.isOn) {
         if (gBoard[i][j].isShown === true) {
             alert('Cannot flag shown cell');
@@ -101,8 +101,9 @@ function setFlag(event, i, j) {
             gGame.markedCount++;
             renderCell({ i, j }, FLAG);
         }
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        event.preventDefault();
     }
-    event.preventDefault();
     return false;
 }
 
