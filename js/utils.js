@@ -1,46 +1,6 @@
 'use strict'
 console.log('Sprint-1-Nadav Mozes');
-
-function buildBoard() {
-    var board = [];
-    for (var i = 0; i < gSelectedLevel.size; i++) {
-        board[i] = []
-        for (var j = 0; j < gSelectedLevel.size; j++) {
-            board[i][j] = {
-                minesArountCount: 0,
-                isShown: false,
-                isMine: false,
-                isMarked: false,
-            };
-        }
-    }
-
-
-    return board;
-}
-
-
-function setMinesNegs() {
-    for (var i = 0; i < gSelectedLevel.size; i++) {
-        for (var j = 0; j < gSelectedLevel.size; j++) {
-            gBoard[i][j].minesArountCount = countNeighbors(i, j, gBoard);
-        }
-    }
-}
-
-function setRandomMines() {
-    var boardSize = gSelectedLevel.size;
-    for (var k = 0; k < gSelectedLevel.mines; k++) {
-        var i = getRandomInteger(0, boardSize - 1);
-        var j = getRandomInteger(0, boardSize - 1);
-        while (gBoard[i][j].isMine === true) {
-            i = getRandomInteger(1, boardSize - 1);
-            j = getRandomInteger(1, boardSize - 1);
-        }
-        gBoard[i][j].isMine = true;
-    }
-}
-
+// Render the board // dom
 function renderBoard() {
     var cellDisplay = ' ';
     var strHtml = `<table><tbody>`;
@@ -65,6 +25,46 @@ function renderBoard() {
     strHtml += '</tbody></table>';
     document.querySelector(".board").innerHTML = strHtml;
 }
+// Create the board // model
+function buildBoard() {
+    var board = [];
+    for (var i = 0; i < gSelectedLevel.size; i++) {
+        board[i] = []
+        for (var j = 0; j < gSelectedLevel.size; j++) {
+            board[i][j] = {
+                minesArountCount: 0,
+                isShown: false,
+                isMine: false,
+                isMarked: false,
+            };
+        }
+    }
+    console.table(board);
+    return board;
+}
+
+// Set neighbours of mines
+function setMinesNegs() {
+    for (var i = 0; i < gSelectedLevel.size; i++) {
+        for (var j = 0; j < gSelectedLevel.size; j++) {
+            gBoard[i][j].minesArountCount = countNeighbors(i, j, gBoard);
+        }
+    }
+}
+// Set random mines on board
+function setRandomMines() {
+    var boardSize = gSelectedLevel.size;
+    for (var k = 0; k < gSelectedLevel.mines; k++) {
+        var i = getRandomInteger(0, boardSize - 1);
+        var j = getRandomInteger(0, boardSize - 1);
+        while (gBoard[i][j].isMine === true) {
+            i = getRandomInteger(1, boardSize - 1);
+            j = getRandomInteger(1, boardSize - 1);
+        }
+        gBoard[i][j].isMine = true;
+    }
+}
+
 
 function renderCell(location, value) {
     var elCell = document.querySelector(`.cell${location.i}-${location.j}`);

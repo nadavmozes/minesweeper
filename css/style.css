@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: default;
 }
 
 body {
@@ -10,10 +11,19 @@ body {
 
 h1 {
     text-align: center;
+    margin: 0;
 }
 
 h2 {
     text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.restart {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 div {
@@ -21,12 +31,32 @@ div {
     padding: 20px;
 }
 
-.timer {
+.specs {
     font-size: 24px;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 0;
+}
+
+body>div.specs>p:nth-child(1) {
+    margin-right: 15px;
+    display: inline-block;
+    margin-top: 0;
+}
+
+body>div.specs>p:nth-child(2) {
+    line-height: 28px;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .choose {
     font-size: 28px;
+    text-align: center;
+    margin-top: 0;
+    margin: 0;
+    margin-bottom: 0;
 }
 
 button {
@@ -36,16 +66,30 @@ button {
 
 table {
     margin: auto;
+    padding: 0;
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
-    margin: 8px;
+    width: 45px;
+    height: 45px;
+    margin: 12px;
     text-align: center;
     border: 1px solid lightblue;
     border-radius: 10%;
     background-color: rgb(255, 255, 255);
+}
+
+.close-cell {
+    background-color: blue;
+    cursor: pointer;
+}
+
+.close-cell:hover {
+    background: rgba(11, 14, 223, 0.3)
+}
+
+.open-cell {
+    background-color: white;
 }
 
 .level-scale {
@@ -53,12 +97,13 @@ table {
     font-size: 20px;
     color: black;
     padding-top: 0;
+    padding-bottom: 0;
 }
 
 button.smiley {
-    width: 50px;
-    height: 50px;
-    font-size: 34px;
+    width: 100px;
+    height: 100px;
+    font-size: 70px;
     background-color: Transparent;
     background-repeat: no-repeat;
     border: none;
@@ -100,18 +145,6 @@ body>div.level-scale>button:nth-child(3) {
     cursor: pointer;
     overflow: hidden;
     outline: none;
-}
-
-p {
-    text-align: center;
-}
-
-.close-cell {
-    background-color: blue;
-}
-
-.open-cell {
-    background-color: white;
 }
 
 .num1 {

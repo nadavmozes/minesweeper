@@ -4,8 +4,10 @@ console.log('Sprint-1-Nadav Mozes');
 const MINE = '💥';
 const FLAG = '🛡️';
 const SMILY = '😄';
-const LOSE = '😔';
 const WIN = '🤩';
+const LOSE = '😔';
+const LIVES = '❤️';
+const EMPTYLIVES = '🤍';
 
 // The model/matrix current state.
 var gBoard = [];
@@ -21,7 +23,7 @@ var gGame = {
     secsPassed: 0
 };
 
-
+// Initate the game
 function initGame() {
     startGame();
     createLevelList();
@@ -29,19 +31,21 @@ function initGame() {
     gBoard = buildBoard();
     renderBoard();
 }
-
+// Start Gane
 function startGame() {
     gGame.isOn = true;
     gSelectedLevel = { size: 4, mines: 2 };
     document.querySelector(".smiley").innerText = SMILY;
 }
-
+// Game over status
 function checkGameOver() {
     if (gGame.shownCount + gGame.markedCount === gSelectedLevel.size ** 2) {
         console.log('YOU WON!');
+        document.querySelector(".smiley").innerText = WIN;
     } else console.log('YOU LOSE...');
+    document.querySelector(".smiley").innerText = LOSE;
 }
-
+// Cell has been clicked
 function cellClicked(elCell, i, j) {
     gCounter++;
     if (gCounter === 2) {
@@ -54,13 +58,15 @@ function cellClicked(elCell, i, j) {
         if (gBoard[i][j].isMine) {
             renderCell({ i, j }, MINE);
             gGame.isOn = false;
+            var heart = document.getElementById('hearts').innerHTML;
+            document.getElementById('🤍').innerHTML = heart;
             checkGameOver();
         } else {
             expandShown(elCell, i, j)
         }
     } else return;
 }
-
+// Expand shown when click function
 function expandShown(elCell, i, j) {
     var cellI = i;
     var cellJ = j;
@@ -79,23 +85,26 @@ function expandShown(elCell, i, j) {
     }
 }
 
+// Set flag on cell
 function setFlag(event, i, j) {
     if (gGame.isOn) {
         if (gBoard[i][j].isShown === true) {
             alert('Cannot flag shown cell');
         } else if (gBoard[i][j].isMarked) {
             gBoard[i][j].isMarked = false;
+            gGame.markedCount--;
             renderCell({ i, j }, '');
         } else {
             gBoard[i][j].isMarked = true;
+            gGame.markedCount++;
             renderCell({ i, j }, FLAG);
         }
     }
     event.preventDefault();
     return false;
-
 }
 
+// Setup difficulties
 function renderLevelScale() {
     var elLevelTable = document.querySelector(".level-scale");
     var strHtml = ``;
@@ -105,7 +114,7 @@ function renderLevelScale() {
     elLevelTable.innerHTML = strHtml;
 
 }
-
+// Set difficulty
 function setDifficulty(levelCell) {
     for (var i = 0; i < gLevels.length; i++) {
         if (i === levelCell) {
@@ -117,14 +126,7 @@ function setDifficulty(levelCell) {
     gBoard = buildBoard();
     renderBoard();
 }
-
-function createLevelList() {
-    gLevels.push(createLevel(0, 'Easy ||', 4, 2, true));
-    gLevels.push(createLevel(1, 'Medium ||', 8, 12, false));
-    gLevels.push(createLevel(2, 'Hard', 12, 30, false));
-
-}
-
+// Create the level of difficulty
 function createLevel(id, name, size, mines, isSelected) {
     return {
         id,
@@ -133,4 +135,11 @@ function createLevel(id, name, size, mines, isSelected) {
         mines,
         isSelected,
     }
+}
+// List of difficulties
+function createLevelList() {
+    gLevels.push(createLevel(0, 'Easy ||', 4, 2, true));
+    gLevels.push(createLevel(1, 'Medium ||', 8, 12, false));
+    gLevels.push(createLevel(2, 'Hard', 12, 30, false));
+
 }
