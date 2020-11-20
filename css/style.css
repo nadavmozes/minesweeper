@@ -18,6 +18,8 @@ h2 {
     text-align: center;
     margin-bottom: 0;
     margin-top: 0;
+    font-size: 18px;
+    line-height: 32px;
 }
 
 .restart {
@@ -62,8 +64,33 @@ body>div.timerset>p.timer {
     height: 28px;
 }
 
+.undo {
+    display: inline-block;
+    margin: auto;
+}
+
+.hints {
+    display: inline-block;
+    margin: auto;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+body>div.specs>p.hints>span {
+    cursor: pointer;
+    margin-left: 5;
+}
+
+body>div.specs>button {
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
 body>div.specs>p:nth-child(1) {
-    margin-right: 15px;
+    margin-right: 5px;
     display: inline-block;
     margin-top: 0;
 }
