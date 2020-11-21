@@ -76,6 +76,17 @@ body>div.timerset>p.timer {
     margin-left: 10px;
 }
 
+.scores {
+    position: absolute;
+    top: 185px;
+    width: 200px;
+    height: 200px;
+    font-size: 18px;
+    left: 200px;
+    background-color: rgb(229, 229, 192);
+    text-align: center;
+}
+
 body>div.specs>p.hints>span {
     cursor: pointer;
     margin-left: 5;

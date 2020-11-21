@@ -2,7 +2,7 @@
 console.log('Sprint-1-Nadav Mozes');
 // Indications Mapping.
 const MINE = '💥';
-const FLAG = '🛡️';
+const FLAG = '🏁';
 const SMILY = '😄';
 const WIN = '🤩';
 const LOSE = '😔';
@@ -39,12 +39,12 @@ function startGame() {
 }
 // Game over status
 function checkGameOver() {
-    if (gGame.shownCount + gGame.markedCount === gSelectedLevel.size ** 2) {
-        console.log('YOU WON!');
+    if ((gGame.shownCount + gSelectedLevel.mines) === gSelectedLevel.size ** 2) {
+        gGame.isOn = false
         document.querySelector(".smiley").innerText = WIN;
-    } else console.log('YOU LOSE...');
-    document.querySelector(".smiley").innerText = LOSE;
-    clearInterval(startTimer('.timer'));
+    } else if (!gGame.isOn) {
+        document.querySelector(".smiley").innerText = LOSE;
+    }
 }
 // Cell has been clicked
 function cellClicked(elCell, i, j) {
@@ -70,7 +70,7 @@ function cellClicked(elCell, i, j) {
     } else return;
 }
 // Expand shown when click function
-function expandShown(elCell, i, j) {
+function expandShown(board, i, j) {
     var cellI = i;
     var cellJ = j;
     if (gBoard[i][j].minesArountCount === 0) {
@@ -86,6 +86,17 @@ function expandShown(elCell, i, j) {
         gBoard[i][j].isShown = true;
         renderCell({ i, j }, gBoard[i][j].minesArountCount);
     }
+}
+
+// Undo action
+function undo() {
+    // check if working.
+    initGame();
+}
+
+// Hint function
+function hints() {
+    // reveal a cell with mine?
 }
 
 // Set flag on cell
